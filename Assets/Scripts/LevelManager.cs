@@ -4,18 +4,8 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [System.Serializable]
-    private struct DataSoal
-    {
-        public string judul;
-        public string pertanyaan;
-        public Sprite hint;
-
-        public string[] jawabanTeks;
-        public bool[] adalahBenar;
-    }
-
-    [SerializeField] private DataSoal[] _soalSoal = new DataSoal[0];
+    [SerializeField] private LevelPackKuis _soalSoal = null;
+    [SerializeField] private PlayerProgress _playerProgress = null;
     [SerializeField] private UI_Pertanyaan _tempatPertanyaan = null;
     [SerializeField] private UI_PoinJawaban[] _tempatPilihanJawaban = new UI_PoinJawaban[0];
 
@@ -23,6 +13,13 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        //Cek apabila tidak berhasil memuat progres
+        if (!_playerProgress.MuatProgres())
+        {
+            //Buat simpanan progres atau ganti dengan yang baru
+            _playerProgress.SimpanProgres();
+        }
+
         NextLevel();
     }
 
@@ -32,21 +29,22 @@ public class LevelManager : MonoBehaviour
         _indexSoal++;
 
         //Jika index melampaui soal terakhir, ulang dari awal
-        if (_indexSoal >= _soalSoal.Length)
+        if (_indexSoal >= _soalSoal.BanyakLevel)
         {
             _indexSoal = 0;
         }
 
         //Ambil data Pertanyaan
-        DataSoal soal = _soalSoal[_indexSoal];
+        LevelSoalKuis soal = _soalSoal.AmbilLevelKe(_indexSoal);
 
         //Set informasi soal
-        _tempatPertanyaan.SetPertanyaan(soal.judul, soal.pertanyaan, soal.hint);
+        _tempatPertanyaan.SetPertanyaan($"Level {_indexSoal + 1}", soal.pertanyaan, soal.hint);
 
         for (int i = 0; i < _tempatPilihanJawaban.Length; i++)
         {
             UI_PoinJawaban poin = _tempatPilihanJawaban[i];
-            poin.SetJawaban(soal.jawabanTeks[i], soal.adalahBenar[i]);
+            LevelSoalKuis.OpsiJawaban opsi = soal.opsiJawaban[i];
+            poin.SetJawaban(opsi.jawabanTeks, opsi.adalahBenar);
         }
     }
 }
