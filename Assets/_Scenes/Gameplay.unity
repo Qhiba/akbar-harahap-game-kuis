@@ -1373,6 +1373,7 @@ GameObject:
   - component: {fileID: 834680875}
   - component: {fileID: 834680874}
   - component: {fileID: 834680873}
+  - component: {fileID: 834680876}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -1468,6 +1469,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 834680876}
+        m_TargetAssemblyTypeName: PemanggilSuara, Assembly-CSharp
+        m_MethodName: PanggilSuara
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 3656768cb652cc9488d86952de64d8ae, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &834680874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,6 +1519,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834680871}
   m_CullTransparentMesh: 1
+--- !u!114 &834680876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834680871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a79fd57650bd6e479871cf4137b1f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &835185421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,6 +1541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 835185423}
   - component: {fileID: 835185422}
+  - component: {fileID: 835185424}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -1546,6 +1572,9 @@ MonoBehaviour:
   - {fileID: 310532997}
   gameSceneManager: {fileID: 471106126}
   sceneMenuLevel: Menu Pilih Level
+  _pemanggilSuara: {fileID: 835185424}
+  _suaraMenang: {fileID: 8300000, guid: 4f5b986e53e7b4842a289cd4bfc471f6, type: 3}
+  _suaraKalah: {fileID: 8300000, guid: 119770dc74447264a834310224f4254d, type: 3}
 --- !u!4 &835185423
 Transform:
   m_ObjectHideFlags: 0
@@ -1561,6 +1590,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &835185424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835185421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a79fd57650bd6e479871cf4137b1f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &858164343
 GameObject:
   m_ObjectHideFlags: 0
@@ -2538,6 +2579,7 @@ GameObject:
   - component: {fileID: 1402834161}
   - component: {fileID: 1402834160}
   - component: {fileID: 1402834159}
+  - component: {fileID: 1402834162}
   m_Layer: 5
   m_Name: Tombol Lanjut
   m_TagString: Untagged
@@ -2631,7 +2673,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1530951587}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -2668,6 +2710,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1402834162}
+        m_TargetAssemblyTypeName: PemanggilSuara, Assembly-CSharp
+        m_MethodName: PanggilSuara
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 3656768cb652cc9488d86952de64d8ae, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1402834160
 MonoBehaviour:
@@ -2707,6 +2761,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402834157}
   m_CullTransparentMesh: 1
+--- !u!114 &1402834162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402834157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a79fd57650bd6e479871cf4137b1f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1412282887
 GameObject:
   m_ObjectHideFlags: 0
@@ -3060,6 +3126,7 @@ GameObject:
   - component: {fileID: 1530951590}
   - component: {fileID: 1530951592}
   - component: {fileID: 1530951589}
+  - component: {fileID: 1530951593}
   m_Layer: 5
   m_Name: Message Console
   m_TagString: Untagged
@@ -3074,7 +3141,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530951587}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3102,6 +3169,7 @@ MonoBehaviour:
   _tempatPesan: {fileID: 2060449554}
   _menuOpsiMenang: {fileID: 1685890458}
   _menuOpsiKalah: {fileID: 647465366}
+  _anim: {fileID: 1530951593}
 --- !u!114 &1530951590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3152,6 +3220,27 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!95 &1530951593
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530951587}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d73da312667738b49842800ec525d50f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1575217487
 GameObject:
   m_ObjectHideFlags: 0
@@ -3507,6 +3596,7 @@ GameObject:
   - component: {fileID: 1682083851}
   - component: {fileID: 1682083850}
   - component: {fileID: 1682083849}
+  - component: {fileID: 1682083852}
   m_Layer: 5
   m_Name: Tombol Kembali ke Menu
   m_TagString: Untagged
@@ -3590,6 +3680,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1682083852}
+        m_TargetAssemblyTypeName: PemanggilSuara, Assembly-CSharp
+        m_MethodName: PanggilSuara
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 3656768cb652cc9488d86952de64d8ae, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 471106126}
         m_TargetAssemblyTypeName: GameSceneManager, Assembly-CSharp
         m_MethodName: BukaScene
@@ -3640,6 +3742,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682083847}
   m_CullTransparentMesh: 1
+--- !u!114 &1682083852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682083847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a79fd57650bd6e479871cf4137b1f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1685890458
 GameObject:
   m_ObjectHideFlags: 0
@@ -3854,6 +3968,7 @@ GameObject:
   - component: {fileID: 1862243451}
   - component: {fileID: 1862243450}
   - component: {fileID: 1862243449}
+  - component: {fileID: 1862243452}
   m_Layer: 5
   m_Name: Tombol Ulang
   m_TagString: Untagged
@@ -3924,7 +4039,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1862243450}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 471106126}
+        m_TargetAssemblyTypeName: GameSceneManager, Assembly-CSharp
+        m_MethodName: BukaScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Gameplay
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1862243452}
+        m_TargetAssemblyTypeName: PemanggilSuara, Assembly-CSharp
+        m_MethodName: PanggilSuara
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 3656768cb652cc9488d86952de64d8ae, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1862243450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3963,6 +4102,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862243447}
   m_CullTransparentMesh: 1
+--- !u!114 &1862243452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862243447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a79fd57650bd6e479871cf4137b1f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1874018103
 GameObject:
   m_ObjectHideFlags: 0

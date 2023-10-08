@@ -8,16 +8,19 @@ public class UI_LevelPackList : MonoBehaviour
     [SerializeField] private UI_OpsiLevelPack _tombolLevelPack = null;
     [SerializeField] UI_LevelKuisList _levelList = null;
     [SerializeField] private RectTransform _content = null;
-    [Space, SerializeField] private LevelPackKuis[] _levelPacks = new LevelPackKuis[0];
+    [SerializeField] private Animator _animator = null;
+    
+    //[Space, SerializeField] private LevelPackKuis[] _levelPacks = new LevelPackKuis[0];
 
     // Start is called before the first frame update
     void Start()
     {
-        LoadLevelPack();
+        //LoadLevelPack();
 
+        //Cek apakah setelah Gameplay sempat kalah
         if (_initGameplay.SaatKalah)
         {
-            UI_OpsiLevelPack_EventSaatKlik(_initGameplay.levelPack);
+            UI_OpsiLevelPack_EventSaatKlik(null, _initGameplay.levelPack, false);
         }
 
         //Subscribe events
@@ -25,9 +28,9 @@ public class UI_LevelPackList : MonoBehaviour
     }
 
     //Method untuk memuat semua level pack sebelum ditampilkan
-    private void LoadLevelPack()
+    public void LoadLevelPack(LevelPackKuis[] levelPacks, PlayerProgress.MainData playerData)
     {
-        foreach (var levelPack in _levelPacks)
+        foreach (var levelPack in levelPacks)
         {
             //Membuat salinan objek dari prefab tombol level pack
             var tombol = Instantiate(_tombolLevelPack);
@@ -37,6 +40,13 @@ public class UI_LevelPackList : MonoBehaviour
             //Masukkan objek tombol sebagai anak dari objek "content"
             tombol.transform.SetParent(_content);
             tombol.transform.localScale = Vector3.one;
+
+            //Cek apakah level pack terdaftar di Dictionary progres pemain
+            if (!playerData.progresLevel.ContainsKey(levelPack.name))
+            {
+                //Jika tidak terdaftar maka Level Pack terkunci
+                tombol.KunciLevelPack();
+            }
         }
     }
 
@@ -46,15 +56,20 @@ public class UI_LevelPackList : MonoBehaviour
         UI_OpsiLevelPack.EventSaatKlik -= UI_OpsiLevelPack_EventSaatKlik;
     }
 
-    private void UI_OpsiLevelPack_EventSaatKlik(LevelPackKuis levelPack)
+    private void UI_OpsiLevelPack_EventSaatKlik(UI_OpsiLevelPack tombolLevelPack, LevelPackKuis levelPack, bool terkunci)
     {
+        //Cek apakah terkunci, jika terkunci abaikan
+        if (terkunci) return;
+
         //Buka Menu Levels
-        _levelList.gameObject.SetActive(true);
+        //_levelList.gameObject.SetActive(true);
         _levelList.UnloadLevelPack(levelPack);
 
         //Tutup Menu Level Packs
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
 
         _initGameplay.levelPack = levelPack;
+
+        _animator.SetTrigger("KeLevels");
     }
 }

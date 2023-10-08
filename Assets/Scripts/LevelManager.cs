@@ -13,7 +13,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private UI_PoinJawaban[] _tempatPilihanJawaban = new UI_PoinJawaban[0];
 
     [SerializeField] private GameSceneManager gameSceneManager = null;
-    [SerializeField] private string sceneMenuLevel = null;
+    [SerializeField] private string sceneMenuLevel = string.Empty;
+
+    [SerializeField] private PemanggilSuara _pemanggilSuara = null;
+    [SerializeField] private AudioClip _suaraMenang = null;
+    [SerializeField] private AudioClip _suaraKalah = null;
 
     private int _indexSoal = -1;
 
@@ -30,6 +34,7 @@ public class LevelManager : MonoBehaviour
         _indexSoal = _initGameplay.levelIndex - 1;
 
         NextLevel();
+        AudioManager.instance.PlayBGM(1);
 
         //Subscribe events
         UI_PoinJawaban.EventJawabSoal += UI_PoinJawaban_EventJawabSoal;
@@ -48,9 +53,22 @@ public class LevelManager : MonoBehaviour
 
     private void UI_PoinJawaban_EventJawabSoal(string jawaban, bool adalahBenar)
     {
-        if (adalahBenar)
+        _pemanggilSuara.PanggilSuara(adalahBenar ? _suaraMenang : _suaraKalah);
+
+        if (!adalahBenar) return;
+
+        string namaLevelPack = _initGameplay.levelPack.name;
+        int levelTerakhir = _playerProgress.progresData.progresLevel[namaLevelPack];
+
+        if (_indexSoal + 2 > levelTerakhir)
         {
+            //Tambahkan koin sebagai hadiah dari menyelesaikan soal kuis
             _playerProgress.progresData.koin += 20;
+
+            //Membuka level selanjutnya agar dapat diakses di menu level
+            _playerProgress.progresData.progresLevel[namaLevelPack] = _indexSoal + 2;
+
+            _playerProgress.SimpanProgres();
         }
     }
 

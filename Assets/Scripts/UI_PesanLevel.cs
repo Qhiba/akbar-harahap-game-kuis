@@ -9,6 +9,7 @@ public class UI_PesanLevel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _tempatPesan = null;
     [SerializeField] private GameObject _menuOpsiMenang = null;
     [SerializeField] private GameObject _menuOpsiKalah = null;
+    [SerializeField] private Animator _anim = null;
 
     public string Pesan
     {
@@ -40,6 +41,8 @@ public class UI_PesanLevel : MonoBehaviour
 
         _menuOpsiMenang.SetActive(false);
         _menuOpsiKalah.SetActive(true);
+
+        _anim.SetBool("Menang", false);
     }
 
     private void UI_PoinJawaban_EventJawabSoal(string jawaban, bool adalahBenar)
@@ -57,5 +60,7 @@ public class UI_PesanLevel : MonoBehaviour
             _menuOpsiMenang.SetActive(false);
             _menuOpsiKalah.SetActive(true);
         }
+
+        _anim.SetBool("Menang", adalahBenar);
     }
 }
